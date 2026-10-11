@@ -18,3 +18,32 @@
 
 # Не игнорировать сам .gitignore
 !.gitignore
+
+# Внутри лаб — разрешить папку проекта
+!лр1/MyProject/
+!лр2/MyProject/
+!лр3/MyProject/
+!лр4/MyProject/
+!лр5/MyProject/
+
+# И всё, что внутри этих папок
+!лр1/MyProject/**
+!лр2/MyProject/**
+!лр3/MyProject/**
+!лр4/MyProject/**
+!лр5/MyProject/**
+
+# Виртуальные окружения Python
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.pyc
+*.pyo
+
+# Шпоры / черновики — не нужны в репозитории
+шп*.docx
+
+# Временные файлы Word
+~$*

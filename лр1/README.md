@@ -41,7 +41,10 @@ venv\Scripts\activate
 ```bash
 pip install Django
 ```
-https://./images/1.jpg
+
+![ ](images/1.jpg)
+
+Рисунок 1 – Установка Django в виртуальном окружении*
 
 ### 4. Проверка установленных пакетов
 Запустим команду pip list для проверки установленных библиотек.

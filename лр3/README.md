@@ -64,7 +64,7 @@ def index(request):
 <body>
 </body>
 </html>
-``
+```
 ![ ](images/3.jpg)
 
 Рисунок 3 – Содержимое index.html
@@ -127,9 +127,9 @@ def index(request):
 ```python
 LANGUAGE_CODE = 'ru'
 ```
-![ ](images/00.jpg)
+![ ](images/7.1.jpg)
 
-Рисунок 7.1 – Файл settings.py
+Рисунок 9 – Файл settings.py
 
 Обновляем страницу и видим русский формат дат.
 
@@ -232,7 +232,7 @@ class Meta:
 ```python
 verbose_name_plural = 'Новости'
 ```
-![ ](images/00.jpg)
+![ ](images/11.4.jpg)
 
 Рисунок 22 – Атрибут
 
@@ -243,7 +243,7 @@ ordering = ['-created_at']
 ```
 Возвращаем в views.py News.objects.all().
 
-![ ](images/00.jpg)
+![ ](images/12.1.jpg)
 
 Рисунок 23 – Список новостей с новой сортировкой
 
@@ -252,11 +252,11 @@ ordering = ['-created_at']
 ```python
 verbose_name = 'Новости'
 ```
-![ ](images/00.jpg)
+![ ](images/13.jpg)
 
 Рисунок 24 – Файл apps.py
 
-![ ](images/00.jpg)
+![ ](images/13.1.jpg)
 
 Рисунок 25 – Раздел «НОВОСТИ»
 
@@ -268,11 +268,11 @@ class NewsAdmin(admin.ModelAdmin):
 
 admin.site.register(News, NewsAdmin)
 ```
-![ ](images/00.jpg)
+![ ](images/16.jpg)
 
 Рисунок 26 – Список с новыми колонками
 
-![ ](images/00.jpg)
+![ ](images/155.jpg)
 
 Рисунок 27 – Обновленная страница
 
@@ -286,11 +286,11 @@ updated_at = models.DateTimeField(auto_now=True, verbose_name='Обновлен�
 photo = models.ImageField(upload_to='photos/%Y/%m/%d', verbose_name='Фото')
 is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
 ```
-![ ](images/00.jpg)
+![ ](images/15.jpg)
 
 Рисунок 28 – Русские заголовки колонок
 
-![ ](images/00.jpg)
+![ ](images/17.jpg)
 
 Рисунок 29 – Обновленная страница
 
@@ -304,40 +304,40 @@ list_display_links = ('id', 'title')
 ```python
 search_fields = ('title', 'content')
 ```
-![ ](images/00.jpg)
+![ ](images/17.jpg)
 
-Рисунок 31 – Ссылки в списке и поле поиска
+Рисунок 30 – Ссылки в списке и поле поиска
 
-![ ](images/00.jpg)
-Рисунок 32 – Поле поиска
+![ ](images/177.jpg)
+Рисунок 31 – Поле поиска
 
 ### 6. Работа с медиафайлами и валидация
 Добавляем новость без фото и нажимаем «Сохранить». Появляется ошибка «Обязательное поле».
 
-![ ](images/00.jpg)
+![ ](images/18.jpg)
 
-Рисунок 33 – Форма
+Рисунок 32 – Форма
 
 Добавляем фото и сохраняем новость.
 
-![ ](images/00.jpg)
+![ ](images/19999.jpg)
 
-Рисунок 34 – Успешное сохранение
+Рисунок 33 – Успешное сохранение
 
 В корне проекта появляется папка media.
 
-![ ](images/00.jpg)
+![ ](images/19.jpg)
 
-Рисунок 35 – Папка media
+Рисунок 34 – Папка media
 
 Чтобы сделать поле фото необязательным, в news/models.py добавляем blank=True:
 
 ```python
 photo = models.ImageField(upload_to='photos/%Y/%m/%d', verbose_name='Фото', blank=True)
 ```
-![ ](images/00.jpg)
+![ ](images/199.jpg)
 
-Рисунок 36 – Файл models.py
+Рисунок 35 – Файл models.py
 
 Выполняем миграции:
 
@@ -345,19 +345,19 @@ photo = models.ImageField(upload_to='photos/%Y/%m/%d', verbose_name='Фото', 
 python manage.py makemigrations
 python manage.py migrate
 ```
+![ ](images/200.jpg)
+
+Рисунок 36 – Команды и результаты
+
 ![ ](images/00.jpg)
 
-Рисунок 37 – Команды и результаты
-
-![ ](images/00.jpg)
-
-Рисунок 38 – Структура миграций
+Рисунок 37 – Структура миграций
 
 Теперь запись без фото успешно сохраняется.
 
-![ ](images/00.jpg)
+![ ](images/6667890.jpg)
 
-Рисунок 39 – Админка с сообщением об успехе
+Рисунок 38 – Админка с сообщением об успехе
 
 ## Вывод
 Научилась выводить данные из модели в браузер с помощью шаблонов, освоила работу с админкой Django, настроила отображение модели в админке.

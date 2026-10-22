@@ -45,7 +45,7 @@ class News(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d')
     is_published = models.BooleanField(default=True)
-
+```
     # Create your models here.
 
 ![ ](images/2.jpg)
@@ -73,23 +73,24 @@ python manage.py migrate
 ### 4. Просмотр SQL-запроса миграции
 В терминале выполняем следующий запрос, чтобы увидеть SQL-код создания таблицы:
 
-bash
+```bash
 python manage.py sqlmigrate news 0001
-https://images/5.jpg
+```
+![ ](images/17.jpg)
 
 Рисунок 5 – Команда sqlmigrate
 
 ### 5. Проверка настроек БД (settings.py)
 В пакете конфигурации в файле settings.py можно увидеть, какая БД в настоящий момент подключена (словарь DATABASES). В проекте подключена БД sqlite3.
 
-https://images/6.jpg
+![ ](images/18.jpg)
 
 Рисунок 6 – Файл settings (DATABASES)
 
 ### 6. Просмотр таблицы в SQLiteStudio
 Выбрав в дереве таблиц таблицу news_news, можно просмотреть поля таблицы, соответствующие полям нашей модели, а также SQL-запрос, который был использован для её создания.
 
-https://images/7.jpg
+![ ](images/24.jpg)
 
 Рисунок 7 – Таблица в SQLiteStudio
 
@@ -99,7 +100,8 @@ https://images/7.jpg
 python
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-https://images/8.jpg
+
+![ ](images/13.jpg)
 
 Рисунок 8 – Настройка MEDIA в settings.py
 
@@ -114,15 +116,17 @@ from django.conf.urls.static import static
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-https://images/9.jpg
+    
+![ ](images/14.jpg)
 
 Рисунок 9 – Настройка urls.py
 
 ### 9. Работа с ORM через консоль Django
 Запускаем консоль:
 
-bash
+```bash
 python manage.py shell
+```
 Импортируем модель: from news.models import News
 
 Создание записей (Create):
@@ -143,7 +147,8 @@ news2.save()
 
 python
 news3 = News.objects.create(title='Новость 3', content='Контент новости 3', is_published=False)
-https://images/10.jpg
+
+![ ](images/1000.jpg)
 
 Рисунок 10 – Создание записей
 
@@ -152,7 +157,8 @@ https://images/10.jpg
 python
 from django.db import connection
 connection.queries
-https://images/11.jpg
+
+![ ](images/999.jpg)
 
 Рисунок 11 – Создание записей (продолжение)
 
@@ -175,18 +181,19 @@ news.delete()
 
 # Исключение (exclude)
 News.objects.exclude(title='Новость 4')
-https://images/12.jpg
+
+![ ](images/10001.jpg)
 
 Рисунок 12 – Методы чтения, обновления и удаления
 
 ### 10. Просмотр обновленной таблицы
 Обновляем таблицу в SQLiteStudio и видим изменения.
 
-https://images/13.jpg
+![ ](images/6.jpg)
 
 Рисунок 13 – Таблица обновленная
 
-https://images/14.jpg
+![ ](images/00.jpg)
 
 Рисунок 14 – Итоговая таблица
 
@@ -207,7 +214,7 @@ python manage.py startapp tasks
 ```python
 'tasks.apps.TasksConfig',
 ```
-https://images/15.jpg
+![ ](images/var44.jpg)
 
 Рисунок 15 – Регистрация приложения в settings.py
 
@@ -226,7 +233,7 @@ class Task(models.Model):
     def __str__(self):
         return self.title
 ```
-https://images/16.jpg
+![ ](images/var4.jpg)
 
 Рисунок 16 – Создание модели Task в tasks/models.py
 
@@ -244,7 +251,7 @@ Task.objects.create(title='Купить продукты', description='Моло
 Task.objects.create(title='Почистить компьютер', description='Удалить пыль, проверить диски', deadline='2026-09-15 12:00:00', is_completed=False, priority=5, category='Техника')
 Task.objects.create(title='Подготовить презентацию', description='Слайды для проекта', deadline='2026-09-09 10:00:00', is_completed=False, priority=2, category='Работа')
 ```
-https://images/17.jpg
+![ ](images/var41.jpg)
 
 Рисунок 17 – Работа с моделью через консоль Django
 
@@ -254,14 +261,14 @@ incomplete_tasks = Task.objects.filter(is_completed=False).order_by('priority')
 for task in incomplete_tasks:
     print(f'{task.title} (приоритет: {task.priority}, категория: {task.category})')
 ```
-https://images/18.jpg
+![ ](images/var42.jpg)
 
 Рисунок 18 – Вывод всех невыполненных задач
 
 **7. Просмотр таблицы tasks_task в SQLiteStudio**
 Обновляем базу данных в SQLiteStudio и проверяем таблицу tasks_task.
 
-https://images/19.jpg
+![ ](images/var45.jpg)
 
 Рисунок 19 – Таблица tasks_task
 

@@ -41,13 +41,13 @@ def index(request):
         res += f'<div>\n<p>{item.title}</p>\n<p>{item.content}</p>\n</div>\n<hr>'
     return HttpResponse(res)
 ```
-![ ](images/00.jpg)
+![ ](images/1.jpg)
 
 Рисунок 1 – Код функции index
 
 Запускаем сервер (python manage.py runserver), открываем http://127.0.0.1:8000/news/ и обновляем страницу.
 
-![ ](images/00.jpg)
+![ ](images/2.jpg)
 
 Рисунок 2 – Страница со списком новостей
 
@@ -65,7 +65,7 @@ def index(request):
 </body>
 </html>
 ``
-![ ](images/00.jpg)
+![ ](images/3.jpg)
 
 Рисунок 3 – Содержимое index.html
 
@@ -74,7 +74,7 @@ def index(request):
 ```python
 from django.shortcuts import render
 ```
-![ ](images/00.jpg)
+![ ](images/4.jpg)
 
 Рисунок 4 – Импорт render
 
@@ -91,13 +91,13 @@ def index(request):
 <h1>{{ title }}</h1>
 {{ news }}
 ```
-![ ](images/00.jpg)
+![ ](images/5.1.jpg)
 
 Рисунок 5 – Вывод {{ title }} и {{ news }}
 
 На странице отобразится нечитабельный список объектов <QuerySet [...]>.
 
-![ ](images/00.jpg)
+![ ](images/5.jpg)
 
 Рисунок 6 – Заголовок и необработанный список объектов
 
@@ -113,11 +113,11 @@ def index(request):
     <hr>
 {% endfor %}
 ```
-![ ](images/00.jpg)
+![ ](images/6.1.jpg)
 
 Рисунок 7 – Использование тега for
 
-![ ](images/00.jpg)
+![ ](images/6.jpg)
 
 Рисунок 8 – Обновлённая страница
 
@@ -129,11 +129,11 @@ LANGUAGE_CODE = 'ru'
 ```
 ![ ](images/00.jpg)
 
-Рисунок 9 – Файл settings.py
+Рисунок 7.1 – Файл settings.py
 
 Обновляем страницу и видим русский формат дат.
 
-![ ](images/00.jpg)
+![ ](images/7ru.jpg)
 
 Рисунок 10 – Страница с русскими датами
 
@@ -142,11 +142,11 @@ LANGUAGE_CODE = 'ru'
 ```html
 <p>{{ item.created_at|date:"Y-m-d H:i:s" }}</p>
 ```
-![ ](images/00.jpg)
+![ ](images/8.jpg)
 
 Рисунок 11 – Файл index.html
 
-![ ](images/00.jpg)
+![ ](images/8.1.jpg)
 
 Рисунок 12 – Страница с датой в формате ISO
 
@@ -161,11 +161,11 @@ def index(request):
     }
     return render(request, 'news/index.html', context)
 ```
-![ ](images/00.jpg)
+![ ](images/9.jpg)
 
 Рисунок 13 – Переменная context в контроллере
 
-![ ](images/00.jpg)
+![ ](images/9.1.jpg)
 
 Рисунок 14 – Обновленная страница
 
@@ -180,13 +180,13 @@ news = News.objects.order_by('-created_at')
 ```bash
 python manage.py createsuperuser
 ```
-![ ](images/00.jpg)
+![ ](images/10.1.jpg)
 
 Рисунок 15 – Успешное создание суперпользователя
 
 Заходим в админку по адресу http://127.0.0.1:8000/admin/.
 
-![ ](images/00.jpg)
+![ ](images/10.jpg)
 
 Рисунок 16 – Главная страница админки
 
@@ -198,17 +198,17 @@ from .models import News
 
 admin.site.register(News)
 ```
-![ ](images/00.jpg)
+![ ](images/10.01.jpg)
 
 Рисунок 17 – Файл admin.py
 
 В админке появился раздел NEWS, где можно добавлять и редактировать новости.
 
-![ ](images/00.jpg)
+![ ](images/10.2.jpg)
 
 Рисунок 18 – Формы добавления пользователя и группы
 
-![ ](images/00.jpg)
+![ ](images/11.2.jpg)
 
 Рисунок 19 – Страница редактирования новости
 
@@ -219,11 +219,11 @@ admin.site.register(News)
 class Meta:
     verbose_name = 'Новость'
 ```
-![ ](images/00.jpg)
+![ ](images/11.jpg)
 
 Рисунок 20 – Файл models.py
 
-![ ](images/00.jpg)
+![ ](images/11.3.jpg)
 
 Рисунок 21 – Результат страницы (удалить)
 
